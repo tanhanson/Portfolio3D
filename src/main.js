@@ -120,7 +120,7 @@ async function init() {
     
     // Création de la voiture
     car = new Car(scene, physics);
-    car.create();
+    await car.create();
     car.setupControls();
     
     // Caméra qui suit la voiture

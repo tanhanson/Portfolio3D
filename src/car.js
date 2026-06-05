@@ -33,16 +33,16 @@ export class Car {
      * const car = new Car(scene, physics);
      * car.create();
      */
-    create() {
-        const chassisMesh = new THREE.Mesh(
-            new THREE.BoxGeometry(2, 1, 4),
-            new THREE.MeshStandardMaterial({ visible: true })
-        );
-        chassisMesh.position.set(0, 1, 60);
-        this.scene.add(chassisMesh);
+    async create() {
+    const chassisMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(2, 1, 4),
+        new THREE.MeshStandardMaterial({ visible: true })
+    );
+    chassisMesh.position.set(0, 1, 60);
+    this.scene.add(chassisMesh);
 
-        this.physics.addMesh(chassisMesh, 600, 0.8); // La valeur 600 est le poid de la voiture
-        this.chassis = chassisMesh.userData.physics.body;
+    await this.physics.addMesh(chassisMesh, 600, 0.8);
+    this.chassis = chassisMesh.userData.physics.body;
         this.car = chassisMesh;
 
         this.vehicleController = this.physics.world.createVehicleController(this.chassis);
