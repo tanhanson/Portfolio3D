@@ -42,6 +42,9 @@ export class Car {
     this.scene.add(chassisMesh);
 
     await this.physics.addMesh(chassisMesh, 600, 0.8);
+    console.log('userData:', JSON.stringify(chassisMesh.userData));
+console.log('physics world:', this.physics.world);
+
     this.chassis = chassisMesh.userData.physics.body;
         this.car = chassisMesh;
 
